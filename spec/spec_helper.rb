@@ -3,6 +3,11 @@
 # Require this file for unit tests
 ENV['HANAMI_ENV'] ||= 'test'
 
+if ENV['HANAMI_ENV'] == 'test'
+  require 'simplecov'
+  SimpleCov.start
+end
+
 require_relative '../config/environment'
 # require 'minitest/autorun'
 require 'rspec/hanami'
@@ -25,3 +30,8 @@ RSpec.configure do |c|
 end
 
 Hanami.boot
+
+if ENV['CI'] == 'true'
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end

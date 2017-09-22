@@ -21,8 +21,10 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'codecov', require: false
   gem 'database_cleaner'
   gem 'rspec-hanami'
+  gem 'simplecov', require: false
 end
 
 group :production do
