@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 gem 'hanami',       '~> 1.0'
 gem 'hanami-model', '~> 1.0'
+gem 'jwt'
 gem 'lotus-view'
 gem 'rake'
 gem 'slim'
 gem 'sqlite3'
-gem 'jwt'
 
 group :development do
   gem 'shotgun'
@@ -20,9 +20,9 @@ group :test, :development do
 end
 
 group :test do
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'rspec-hanami'
-  gem 'capybara'
 end
 
 group :production do
