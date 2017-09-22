@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'hanami',       '~> 1.0'
 gem 'hanami-model', '~> 1.0'
-gem 'hanami-serializer', git: 'https://github.com/davydovanton/hanami-serializer'
 gem 'lotus-view'
 gem 'rake'
 gem 'slim'

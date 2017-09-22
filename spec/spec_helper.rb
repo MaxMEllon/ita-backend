@@ -9,7 +9,6 @@ require 'rspec/hanami'
 require_relative './web/controllers/helpers'
 
 RSpec.configure do |c|
-
   c.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)

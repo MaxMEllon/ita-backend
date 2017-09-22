@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Controllers
   module Helpers
     def create_user(params = {})

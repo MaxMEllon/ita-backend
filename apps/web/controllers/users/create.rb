@@ -24,8 +24,8 @@ module Web::Controllers::Users
     private
 
     def configure_response
-      self.body = 201
-      self.headers.merge!({ 'Content-Type' => 'json' })
+      self.status = 201
+      headers.merge!('Content-Type' => 'json')
     end
 
     def valid_params?

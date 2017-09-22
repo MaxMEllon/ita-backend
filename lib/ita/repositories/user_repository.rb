@@ -4,7 +4,7 @@ class UserRepository < Hanami::Repository
   def find_by_email!(email)
     find_by_email_base(email, true)
   rescue
-    $!
+    $ERROR_INFO
   end
 
   def find_by_email(email)
@@ -21,7 +21,7 @@ class UserRepository < Hanami::Repository
   def find_by_email_base(email, force = false)
     user = users.where(email: email).first
     return user if user
-    raise Ita::RecordNotFoundException.new('User not found by email') if force
+    raise Ita::RecordNotFoundException, 'User not found by email' if force
     false
   end
 end
