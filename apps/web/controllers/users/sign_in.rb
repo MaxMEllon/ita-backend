@@ -18,7 +18,7 @@ module Web::Controllers::Users
       halt 400 unless user.valid_password?(params.get(:user, :password))
       return @user = repo.generate_token_of_user(user.id) if user.token.nil?
       @user = user
-    rescue Ohanami::RecordNotFoundException => _
+    rescue Ita::RecordNotFoundException => _
       halt 404
     end
   end

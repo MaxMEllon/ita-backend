@@ -21,7 +21,8 @@ group :test, :development do
 end
 
 group :test do
-  gem 'minitest'
+  gem 'database_cleaner'
+  gem 'rspec-hanami'
   gem 'capybara'
 end
 

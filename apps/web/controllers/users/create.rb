@@ -4,6 +4,7 @@ module Web::Controllers::Users
   class Create
     include Web::Action
     expose :user
+    before :configure_response
 
     params do
       required(:user).schema do
@@ -13,7 +14,7 @@ module Web::Controllers::Users
       end
     end
 
-    def call(_)
+    def call(params)
       halt 400 unless valid_params?
       repo = UserRepository.new
       halt 400 if repo.find_by_email(params.get(:user, :email))
@@ -21,6 +22,11 @@ module Web::Controllers::Users
     end
 
     private
+
+    def configure_response
+      self.body = 201
+      self.headers.merge!({ 'Content-Type' => 'json' })
+    end
 
     def valid_params?
       params.valid? && valid_password?

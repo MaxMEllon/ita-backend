@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
-require_relative '../lib/ohanami'
+require_relative '../lib/ita'
 require_relative '../apps/web/application'
 
 Hanami.configure do
@@ -14,9 +14,9 @@ Hanami.configure do
     # Available options:
     #
     #  * SQL adapter
-    #    adapter :sql, 'sqlite://db/ohanami_development.sqlite3'
-    #    adapter :sql, 'postgresql://localhost/ohanami_development'
-    #    adapter :sql, 'mysql://localhost/ohanami_development'
+    #    adapter :sql, 'sqlite://db/ita_development.sqlite3'
+    #    adapter :sql, 'postgresql://localhost/ita_development'
+    #    adapter :sql, 'mysql://localhost/ita_development'
     #
     adapter :sql, ENV['DATABASE_URL']
 
@@ -28,7 +28,7 @@ Hanami.configure do
   end
 
   mailer do
-    root 'lib/ohanami/mailers'
+    root 'lib/ita/mailers'
 
     # See http://hanamirb.org/guides/mailers/delivery
     delivery :test

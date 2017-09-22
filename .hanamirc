@@ -1,4 +1,4 @@
-project=ohanami
+project=ita
 architecture=container
-test=minitest
+test=rspec
 template=slim
