@@ -25,4 +25,20 @@ describe Web::Controllers::Users::SignIn do
       expect(response[0]).to eq 200
     end
   end
+
+  context 'of failure cases' do
+    let(:params) do
+      {
+        user: {
+          email: 'sample@hogepoge.com',
+          password: 'okashina_password'
+        }
+      }
+    end
+
+    it 'is tried creation' do
+      response = action.call(params)
+      expect(response[0]).to eq 404
+    end
+  end
 end

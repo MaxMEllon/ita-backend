@@ -22,4 +22,21 @@ describe Web::Controllers::Users::Create do
       expect(response[0]).to eq 201
     end
   end
+
+  context 'of failure cases' do
+    let(:params) do
+      {
+        user: {
+          email: 'sample@hogehoge.com',
+          password: 'foobar',
+          password_confirmation: 'hogepoge'
+        }
+      }
+    end
+
+    it 'is created' do
+      response = action.call(params)
+      expect(response[0]).to eq 400
+    end
+  end
 end

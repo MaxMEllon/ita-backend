@@ -36,7 +36,7 @@ class BaseSerializer
       begin
         @obj.send(key)
       rescue
-        $ERROR_INFO
+        raise $ERROR_INFO
       end
       # rubocop:enable Lint/RescueWithoutErrorClass
     end

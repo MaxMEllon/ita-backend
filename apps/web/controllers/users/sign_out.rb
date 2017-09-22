@@ -17,6 +17,8 @@ module Web::Controllers::Users
       else
         halt 422
       end
+    rescue JWT::DecodeError => _
+      halt 422
     end
 
     private

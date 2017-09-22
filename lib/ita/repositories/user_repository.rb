@@ -5,7 +5,7 @@ class UserRepository < Hanami::Repository
   def find_by_email!(email)
     find_by_email_base(email, true)
   rescue
-    $ERROR_INFO
+    raise $ERROR_INFO
   end
   # rubocop:enable Lint/RescueWithoutErrorClass
 

@@ -14,4 +14,17 @@ describe Web::Controllers::Users::SignOut do
       expect(response[0]).to be 204
     end
   end
+
+  context 'of failure cases' do
+    let(:params) do
+      {
+        token: ''
+      }
+    end
+
+    it 'is created' do
+      response = action.call(params)
+      expect(response[0]).to eq 422
+    end
+  end
 end
