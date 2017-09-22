@@ -39,3 +39,9 @@ jobs:
           name: run tests
           command: |
             bundle exec rspec
+
+      # run pronto
+      - run:
+          name: report to github
+          command: |
+            bundle exec pronto run -f github -c origin/master
