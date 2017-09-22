@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class UserRepository < Hanami::Repository
+  # rubocop:disable Lint/RescueWithoutErrorClass
   def find_by_email!(email)
     find_by_email_base(email, true)
   rescue
     $ERROR_INFO
   end
+  # rubocop:enable Lint/RescueWithoutErrorClass
 
   def find_by_email(email)
     find_by_email_base(email)

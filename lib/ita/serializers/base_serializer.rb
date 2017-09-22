@@ -32,11 +32,13 @@ class BaseSerializer
     if respond_to? key
       send(key)
     else
+      # rubocop:disable Lint/RescueWithoutErrorClass
       begin
         @obj.send(key)
       rescue
         $ERROR_INFO
       end
+      # rubocop:enable Lint/RescueWithoutErrorClass
     end
   end
 
