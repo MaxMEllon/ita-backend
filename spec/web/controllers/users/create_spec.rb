@@ -19,7 +19,7 @@ describe Web::Controllers::Users::Create do
 
     it 'is created' do
       response = action.call(params)
-      expect(response[2]).to eq 201
+      expect(response[2].first).to eq 201
     end
   end
 end

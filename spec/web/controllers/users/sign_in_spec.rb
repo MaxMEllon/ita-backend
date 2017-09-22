@@ -10,17 +10,17 @@ describe Web::Controllers::Users::SignIn do
     create_user
   end
 
-  context 'is successful cases' do
+  context 'of successful cases' do
     let(:params) do
       {
         user: {
           email: 'sample@foobarhogepoge.com',
-          password: 'foober'
+          password: 'foobar'
         }
       }
     end
 
-    it 'is successful' do
+    it 'is created' do
       response = action.call(params)
       expect(response[0]).to eq 200
     end

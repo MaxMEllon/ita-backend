@@ -3,10 +3,13 @@ require_relative '../../../../apps/web/controllers/users/sign_out'
 
 describe Web::Controllers::Users::SignOut do
   let(:action) { Web::Controllers::Users::SignOut.new }
-  let(:params) { Hash[] }
 
-  it 'is successful' do
-    response = action.call(params)
-    response[0].must_equal 200
+  context 'of success cases' do
+    let(:params) { jwt }
+
+    it 'is sign_out' do
+      response = action.call(params)
+      expect(response[0]).to be 204
+    end
   end
 end
