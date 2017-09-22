@@ -27,7 +27,12 @@ jobs:
       # Database setup
       - run: HANAMI_ENV=test bundle exec hanami db create
       - run: HANAMI_ENV=test bundle exec hanami db migrate
-      - run: bundle exec rubocop
+
+      # run rubocop
+      - run:
+          name: run lints
+          command: |
+            bundle exec rubocop
 
       # run tests!
       - run:
