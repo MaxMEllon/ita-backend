@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Web::Views::Todos
-  class Create
+  class List
     include Web::View
 
     def render
-      raw(TodoSerializer.new(todo).json)
+      raw(EachSerializer.new(todos, TodoSerializer).json)
     end
   end
 end

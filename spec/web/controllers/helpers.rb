@@ -27,7 +27,7 @@ module Controllers
 
     def jwt
       user = create_user
-      JSON.parse(UserSerializer.new(user).send_json)
+      JSON.parse(UserSerializer.new(user).json)
     end
   end
 end

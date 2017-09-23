@@ -19,14 +19,14 @@ class BaseSerializer
     @obj = obj
   end
 
-  def send_json(opt = {})
-    result = {}
-    @@keys[to_s]&.each do |key|
-      value = try_send_key(key)
-      result = result.merge(key => value) unless value.nil?
-    end
+  def json(opt = {})
+    result = base
     root = opt&.fetch(:root, '')
     root.empty? ? result.to_json : { root => result }.to_json
+  end
+
+  def hash
+    base
   end
 
   def try_send_key(key)
@@ -47,5 +47,16 @@ class BaseSerializer
 
   def object
     @obj
+  end
+
+  private
+
+  def base
+    result = {}
+    @@keys[self.class.to_s]&.each do |key|
+      value = try_send_key(key)
+      result = result.merge(key => value) unless value.nil?
+    end
+    result
   end
 end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+get '/todos', to: 'todos#list'
 patch '/todos/:id', to: 'todos#update'
 post '/todos', to: 'todos#create'
 

@@ -7,7 +7,7 @@ module Ita::Authentication
 
   def authenticate_user!
     id, token = JWT.decode(params.get(:token), nil, false)[0].values_at('id', 'token')
-    user = UserRepository.find(id)
+    user = UserRepository.new.find(id)
     halt 401 unless user.token == token
     if user
       @current_user = user

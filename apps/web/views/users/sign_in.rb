@@ -5,7 +5,7 @@ module Web::Views::Users
     include Web::View
 
     def render
-      raw(UserSerializer.new(user).send_json)
+      raw(UserSerializer.new(user).json)
     end
   end
 end
