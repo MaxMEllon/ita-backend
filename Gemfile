@@ -21,6 +21,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'codacy-coverage', require: false
   gem 'codecov', require: false
   gem 'database_cleaner'
   gem 'rspec-hanami'

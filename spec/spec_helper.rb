@@ -3,9 +3,12 @@
 # Require this file for unit tests
 ENV['HANAMI_ENV'] ||= 'test'
 
-if ENV['HANAMI_ENV'] == 'test'
+if ENV['CI'] == 'true'
   require 'simplecov'
+  require 'codacy-coverage'
+
   SimpleCov.start
+  Codacy::Reporter.start
 end
 
 require_relative '../config/environment'
@@ -33,5 +36,6 @@ Hanami.boot
 
 if ENV['CI'] == 'true'
   require 'codecov'
+
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
