@@ -33,7 +33,7 @@ module Web::Controllers::Todos
       {
         user_id: current_user.id,
         title: params.get(:todo, :title),
-        progress: 0.0
+        progress: 0
       }
     end
   end

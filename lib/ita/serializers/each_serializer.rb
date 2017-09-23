@@ -23,7 +23,7 @@ class EachSerializer < Selializer
   def base
     result = []
     @list.each do |i|
-      result.push = serializer.new(i).hash
+      result.push @serializer.new(i).hash
     end
     result
   end

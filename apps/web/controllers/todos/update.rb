@@ -12,16 +12,17 @@ module Web::Controllers::Todos
     params do
       required(:token).filled(:str?)
       required(:todo).schema do
-        required(:title).maybe(:str?)
-        required(:progress) { none? | type?(Float) }
+        required(:progress).filled(:int?)
       end
     end
 
-    def call
+    def call(params)
       halt 400 unless params.valid?
       repo = TodoRepository.new
-      if need_update?
-        todo = repo.update(params.get(:id), todo_params)
+      todo = repo.find(params[:id])
+      if need_update?(todo)
+        halt 400 if todo.user_id != current_user.id
+        todo = repo.update(todo.id, todo_params)
         @todo = todo
       else
         halt 304
@@ -34,15 +35,12 @@ module Web::Controllers::Todos
       self.status = 202
     end
 
-    def need_update?
-      todo_params.empty?
+    def need_update?(todo)
+      todo.progress != params.get(:todo, :progress)
     end
 
     def todo_params
-      params = {}
-      params.marge(title: params.get(:title)) unless params.get(:title).nil?
-      params.marge(progress: params.get(:progress)) unless params.get(:progress).nil?
-      params
+      { progress: params.get(:todo, :progress) }
     end
   end
 end
