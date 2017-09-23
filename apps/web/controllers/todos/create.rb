@@ -19,7 +19,7 @@ module Web::Controllers::Todos
     def call(params)
       halt 400 unless params.valid?
       repo = TodoRepository.new
-      todo = repo.create(current_user.id, title: params.get(:title), progress: 0.0)
+      todo = repo.create(user_id: current_user.id, title: params.get(:title), progress: 0.0)
       @todo = todo
     end
 

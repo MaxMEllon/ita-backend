@@ -8,8 +8,21 @@ module Controllers
         password: Digest::SHA256.hexdigest('foobar'),
         token: SecureRandom.urlsafe_base64(nil, false)
       }
-      p = default_params.merge(params)
+      p = default_params.merge params
       UserRepository.new.create(p)
+    end
+
+    def create_todo(params = {})
+      create_user
+      user = UserRepository.new.all.last
+      default_params = {
+        user_id: user.id,
+        title: 'foobar',
+        progress: 'hogepoge'
+      }
+      p = default_params.merge params
+      todo = TodoRepository.new.create(p)
+      todo
     end
 
     def jwt

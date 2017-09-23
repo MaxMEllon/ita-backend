@@ -2,7 +2,7 @@ Hanami::Model.migration do
   change do
     create_table :todos do
       primary_key :id
-      column :user_id, String, null: false
+      column :user_id, Integer, null: false
       column :title, String, null: false
       column :progress, Float, null: false
 
