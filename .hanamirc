@@ -1,4 +1,4 @@
 project=ita
 architecture=container
-test=rspec
+test=minitest
 template=slim

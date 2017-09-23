@@ -6,9 +6,10 @@ class BaseSerializer
 
     def attribute(*syms)
       # rubocop:disable Style/ClassVars
-      @@keys ||= []
+      @@keys ||= {}
+      @@keys[to_s] ||= []
       syms.each do |sym|
-        @@keys.push sym
+        @@keys[to_s].push sym
       end
       # rubocop:enable Style/ClassVars
     end
@@ -20,7 +21,7 @@ class BaseSerializer
 
   def send_json(opt = {})
     result = {}
-    @@keys.each do |key|
+    @@keys[to_s]&.each do |key|
       value = try_send_key(key)
       result = result.merge(key => value) unless value.nil?
     end

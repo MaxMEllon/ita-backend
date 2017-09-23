@@ -11,7 +11,7 @@ describe Web::Controllers::Users::SignOut do
 
     it 'is sign_out' do
       response = action.call(params)
-      expect(response[0]).to be 204
+      expect(response[0]).equal? 204
     end
   end
 
@@ -24,7 +24,7 @@ describe Web::Controllers::Users::SignOut do
 
     it 'is created' do
       response = action.call(params)
-      expect(response[0]).to eq 422
+      expect(response[0]).equal? 422
     end
   end
 end
