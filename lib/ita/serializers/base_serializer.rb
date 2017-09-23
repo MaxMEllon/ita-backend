@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class BaseSerializer
+require_relative './serializer'
+
+class BaseSerializer < Selializer
   class << self
     protected
 

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class EachSerializer
+require_relative './serializer'
+
+class EachSerializer < Selializer
   def initialize(list, serializer)
     @list = list
     @serializer = serializer
