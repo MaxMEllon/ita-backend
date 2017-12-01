@@ -21,10 +21,6 @@ class EachSerializer < Selializer
   private
 
   def base
-    result = []
-    @list.each do |i|
-      result.push @serializer.new(i).hash
-    end
-    result
+    @list.map { |i| @serializer.new(i).hash }
   end
 end

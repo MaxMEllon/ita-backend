@@ -16,4 +16,6 @@ module Ita::Authentication
   rescue JWT::DecodeError => _
     halt 401
   end
+
+  module_function :current_user, :authenticate_user!
 end
